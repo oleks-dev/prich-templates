@@ -64,6 +64,7 @@ def main():
         except Exception as e:
             print(f"- Failed to prepare {template_id}: {e}")
 
+    print(f"Save index file: {INDEX_FILE}")
     INDEX_FILE.parent.mkdir(parents=True, exist_ok=True)
     with INDEX_FILE.open("w") as f:
         f.write(json.dumps({
