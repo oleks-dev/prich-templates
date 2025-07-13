@@ -1,0 +1,47 @@
+id: "code_review"
+name: "Code Review"
+schema_version: "1.0"
+version: "1.0"
+description: Review code with a deep focus on logic, structure, modularity, and design
+tags: ["code", "review"]
+steps:
+  - name: "Code review"
+    type: llm
+    prompt:
+      system: |
+        Assistant is a senior engineer who provides detailed, structured, and constructive code review{% if purpose %} for {{ purpose }}{% endif %}{% if lang %} built using {{ lang }}{% endif %}.
+      user: |
+        Review the following files in terms of logic, structure, modularity, and design. Focus especially on refactoring and clarity.
+    
+        1. Architecture & structure
+        2. Logic & clarity
+        3. Modularity & separation of concerns
+        4. Refactoring opportunities
+        5. Any critical issues or smells
+    
+        Respond with markdown-formatted bullets under each section. Use sub-bullets to not repeat phrasing.
+    
+        {% for block in file %}
+        ### File {{ block }}:
+        ```{% if lang %}{{ lang.lower() }}{% endif %}
+        {{ block | include_file }}
+        ```
+        {% endfor %}
+variables:
+  - name: file
+    description: File to review
+    cli_option: --file
+    required: true
+    type: list[str]
+  - name: purpose
+    description: Brief code purpose (ex. CLI Tool)
+    cli_option: --purpose
+    required: false
+    default: null
+    type: str
+  - name: lang
+    description: Code language (ex. Python, JavaScript, Java)
+    cli_option: --lang
+    required: false
+    default: null
+    type: str
