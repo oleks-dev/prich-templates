@@ -1,0 +1,14 @@
+{
+  "name": "prich templates",
+  "templates": [
+    {
+      "id": "code_review",
+      "name": "Code Review",
+      "description": "Review code with a deep focus on logic, structure, modularity, and design",
+      "version": "1.0",
+      "version_schema": null,
+      "archive": "dist/code_review.zip",
+      "checksum": "740f5823f7cf14c1164e6d79fcc0039d7b9a9995ffd3c9ddd79e10b640e3d448"
+    }
+  ]
+}
