@@ -1,5 +1,7 @@
 # prich Templates Repository  
 
+[![Used by prich](https://img.shields.io/badge/used%20by-prich-blue?logo=github)](https://github.com/oleks-dev/prich)
+
 This repository contains reusable templates for the [**prich** CLI tool](https://github.com/oleks-dev/prich), designed for easy sharing and installation.
 
 ---
