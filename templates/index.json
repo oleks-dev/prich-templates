@@ -1,14 +1,19 @@
 {
-  "name": "prich templates",
+  "name": "Prich Templates Available for Installation from prich-templates GitHub Repository",
   "templates": [
     {
       "id": "code_review",
       "name": "Code Review",
       "description": "Review code with a deep focus on logic, structure, modularity, and design",
+      "tags": [
+        "code",
+        "review"
+      ],
+      "author": "prich",
       "version": "1.0",
-      "version_schema": null,
+      "schema_version": "1.0",
       "archive": "dist/code_review.zip",
-      "checksum": "740f5823f7cf14c1164e6d79fcc0039d7b9a9995ffd3c9ddd79e10b640e3d448"
+      "checksum": "7ddc12d0fb4b41786f6463ff6c14b1e383b582be75056011e758d056ca6def52"
     }
   ]
 }
