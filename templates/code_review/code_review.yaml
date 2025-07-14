@@ -2,6 +2,7 @@ id: "code_review"
 name: "Code Review"
 schema_version: "1.0"
 version: "1.0"
+author: "prich"
 description: Review code with a deep focus on logic, structure, modularity, and design
 tags: ["code", "review"]
 steps:

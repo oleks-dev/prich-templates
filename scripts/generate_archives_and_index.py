@@ -55,8 +55,10 @@ def main():
                 "id": template_id,
                 "name": template.get("name"),
                 "description": template.get("description"),
+                "tags": template.get("tags"),
+                "author": template.get("author"),
                 "version": template.get("version"),
-                "version_schema": template.get("version_schema"),
+                "schema_version": template.get("schema_version"),
                 "archive": f"{DIST_DIR.name}/{zip_name}",
                 "checksum": checksum
             })
@@ -68,7 +70,7 @@ def main():
     INDEX_FILE.parent.mkdir(parents=True, exist_ok=True)
     with INDEX_FILE.open("w") as f:
         f.write(json.dumps({
-            "name": "prich templates",
+            "name": "Prich Templates Available for Installation from prich-templates GitHub Repository",
             "templates": templates
         }, sort_keys=False, indent=2))
 
