@@ -1,18 +1,18 @@
-id: "code_review"
+id: "code-review"
 name: "Code Review"
 schema_version: "1.0"
 version: "1.0"
 author: "prich"
 description: Review code with a deep focus on logic, structure, modularity, and design
-tags: ["code", "review"]
+tags: ["code", "review", "quality", "refactor", "design"]
 steps:
-  - name: "Code review"
+  - name: "Ask to do a code review"
     type: llm
     prompt:
       system: |
         Assistant is a senior engineer who provides detailed, structured, and constructive code review{% if purpose %} for {{ purpose }}{% endif %}{% if lang %} built using {{ lang }}{% endif %}.
       user: |
-        Review the following files in terms of logic, structure, modularity, and design. Focus especially on refactoring and clarity.
+        Review the following files in terms of logic, structure, modularity, and design. Focus especially on refactoring and clarity{% if focus %}, specifically on {{ focus }} aspects where applicable{% endif %}.
     
         1. Architecture & structure
         2. Logic & clarity
@@ -43,6 +43,12 @@ variables:
   - name: lang
     description: Code language (ex. Python, JavaScript, Java)
     cli_option: --lang
+    required: false
+    default: null
+    type: str
+  - name: focus
+    description: Optional review focus (ex. security, performance, readability)
+    cli_option: --focus
     required: false
     default: null
     type: str

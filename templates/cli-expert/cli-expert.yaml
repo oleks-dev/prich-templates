@@ -1,0 +1,41 @@
+id: "cli-expert"
+name: "CLI Expert"
+schema_version: "1.0"
+version: "1.0"
+author: "prich"
+description: CLI command usage helper providing real-world examples for shell commands across different operating systems.
+tags: ["os", "cli", "shell", "helper"]
+steps:
+  - name: "Ask about cli command"
+    type: llm
+    prompt:
+      system: |
+        Assistant is a senior engineer and CLI expert. They provide{% if short %} an{% endif %} accurate, safe, real-world example{% if not short %}s of how to use command-line tools{% endif %}{% if os %} on {{ os }} systems{% endif %}. Only respond with command usage example{% if not short %}s and brief explanation, no installation steps or unrelated context.{% endif %}{% if os and os.lower() == "unix" %} Assume Bash unless otherwise specified.{% endif %}
+        {% if not short %}If the command has important OS-specific variants or requires elevated permissions, mention them clearly. Only mention elevated permission wrappers (like sudo or runas) when they are **commonly** required.{% endif %}
+      user: |
+        I want {{ query }}, what command I can use{% if not short %} and how?{% else%}, give just one command example with no other text.{% endif %}
+usage_examples:
+  - "cli-expert --query 'move file to another folder' --os unix"
+  - "cli-expert --query 'check ip address' --os windows"
+  - "cli-expert --query 'search for specific word in the docker container logs'"
+  - "cli-expert --query 'check open ports' --os unix --short"
+  - "cli-expert --query 'merge two branches with git'"
+  - "cli-expert --query 'check current git branch' --short"
+  - "cli-expert --query 'git fetch vs pull'"
+variables:
+  - name: query
+    description: Query on CLI commands
+    cli_option: --query
+    required: true
+    type: str
+  - name: os
+    description: OS type
+    cli_option: --os
+    required: false
+    default: null
+    type: str
+  - name: short
+    description: Make one command short answer
+    cli_option: --short
+    required: false
+    type: bool
