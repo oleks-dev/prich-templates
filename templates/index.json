@@ -1,0 +1,53 @@
+{
+  "name": "Prich Templates Available for Installation from prich-templates GitHub Repository",
+  "templates": [
+    {
+      "id": "cli-expert",
+      "name": "CLI Expert",
+      "description": "CLI command usage helper providing real-world examples for shell commands across different operating systems.",
+      "tags": [
+        "os",
+        "cli",
+        "shell",
+        "helper"
+      ],
+      "author": "prich",
+      "version": "1.0",
+      "schema_version": "1.0",
+      "archive": "dist/cli-expert.zip",
+      "checksum": "f9f7bbbaea086e61b0771e81573d3bf444119ac4d6daf4b7d359c9c1f02c3281"
+    },
+    {
+      "id": "code-review",
+      "name": "Code Review",
+      "description": "Review code with a deep focus on logic, structure, modularity, and design",
+      "tags": [
+        "code",
+        "review",
+        "quality",
+        "refactor",
+        "design"
+      ],
+      "author": "prich",
+      "version": "1.0",
+      "schema_version": "1.0",
+      "archive": "dist/code-review.zip",
+      "checksum": "2ab12cd980790dea686d5abcaf17bdbff7391f1995bb27de96afb24838d10152"
+    },
+    {
+      "id": "generate-docstrings",
+      "name": "Generate Docstrings",
+      "description": "Generate Docstring documentation for code methods/classes",
+      "tags": [
+        "code",
+        "doc",
+        "generate"
+      ],
+      "author": "prich",
+      "version": "1.0",
+      "schema_version": "1.0",
+      "archive": "dist/generate-docstrings.zip",
+      "checksum": "86ffe843955f2281e74e3eacbda2d9073496ff9ce4ba2b1855087190d8b34f71"
+    }
+  ]
+}
