@@ -6,6 +6,8 @@ This repository contains reusable templates for the [**prich** CLI tool](https:/
 
 ---
 
+See [Prich Templates List](https://github.com/oleks-dev/prich-templates/blob/main/templates/index.md)
+
 ## List Available Templates
 
 To list available remote templates from this repository, run:
