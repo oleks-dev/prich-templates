@@ -1,0 +1,35 @@
+id: "explain-code"
+name: "Explain Code"
+schema_version: "1.0"
+version: "1.0"
+author: "prich"
+description: Provide detailed code explanation
+tags: ["code"]
+steps:
+  - name: "Ask to explain code"
+    type: llm
+    prompt:
+      system: |
+        Assistant is a senior engineer who provides detailed code explanation.
+      user: |
+        Explain what this{% if lang %} {{ lang }}{% endif %} code does:
+        File: {{ file }}
+        ```{% if lang %}{{ lang.lower() }}{% endif %}
+        {{ file | include_file }}
+        ```
+usage_examples:
+  - "explain-code --file mycode.py"
+  - "explain-code --file ./mycode.py --lang python"
+  - "explain-code --file ./proj/mycode.js --lang javascript"
+variables:
+  - name: file
+    description: File to review
+    cli_option: --file
+    required: true
+    type: str
+  - name: lang
+    description: Code language (ex. Python, JavaScript, Java)
+    cli_option: --lang
+    required: false
+    default: null
+    type: str

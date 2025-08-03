@@ -1,0 +1,31 @@
+id: "generate-unit-tests"
+name: "Generate Unit Tests"
+schema_version: "1.0"
+version: "1.0"
+author: "prich"
+description: Generate Unit Tests for the code file
+tags: ["code", "quality", "test"]
+steps:
+  - name: "Ask to Generate Unit Tests"
+    type: llm
+    prompt:
+      system: |
+        Assistant is a senior engineer who writes unit tests for{% if lang %} {{ lang }}{% endif %}.
+      user: |
+        Write unit tests for the following code:
+        File: {{ file }}
+        ```{% if lang %}{{ lang.lower() }}{% endif %}
+        {{ file | include_file }}
+        ```
+variables:
+  - name: file
+    description: Code file
+    cli_option: --file
+    required: true
+    type: str
+  - name: lang
+    description: Coding language (Python/Java/JavaScript)
+    cli_option: --lang
+    required: false
+    default: ""
+    type: str

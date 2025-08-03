@@ -31,12 +31,12 @@ def generate_md_file(index_data):
     md_content = [
         f"# {index_data.get('name')}  ",
         "",
-        "| ID   | Name  | Description | Tags  | Version | Author | Archive |",
-        "| :--- | :---: |    :---:    | :---: |  :---:  | :---:  | :---    |"
+        "| ID   | Name  | Description | Tags  | Version | Author | Archive | Checksum |",
+        "| :--- | :---: |    :---:    | :---: |  :---:  | :---:  | :---    | :---     |"
     ]
     templates = sorted(index_data.get("templates"), key=lambda x: x["id"])
     for template in templates:
-        md_content.append(f"| {template.get('id')} | {template.get('name')} | {template.get('description')} | {', '.join(template.get('tags'))} | {template.get('version')} | {template.get('author')} | [{template.get('archive').split('/')[1]}](https://raw.githubusercontent.com/oleks-dev/prich-templates/main/{template.get('archive')})")
+        md_content.append(f"| {template.get('id')} | {template.get('name')} | {template.get('description')} | {', '.join(template.get('tags'))} | {template.get('version')} | {template.get('author')} | [{template.get('archive').split('/')[1]}](https://raw.githubusercontent.com/oleks-dev/prich-templates/main/{template.get('archive')}) | {template.get('checksum')} |")
 
     with open(INDEX_MD_FILE, "w") as file:
         for line in md_content:
