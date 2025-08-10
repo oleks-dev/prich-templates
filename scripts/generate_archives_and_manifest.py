@@ -81,7 +81,7 @@ def generate_md_file(manifest_data):
     templates = sorted(manifest_data.get("templates"), key=lambda x: x["id"])
     for template in templates:
         md_content.append(f"| [{template.get('id')}]({manifest_data.get('templates_path')}/{template.get('id')}) | {template.get('name')} | {template.get('description')} | {', '.join(template.get('tags'))} | {template.get('version')} | {template.get('author')} | [{template.get('archive')}]({manifest_data.get('archives_path')}/{template.get('archive')}) | {template.get('archive_checksum')[:7]} | {template.get('folder_checksum')[:7]} |")
-
+    md_content.append("")
     md_content.append(f"Manifest file: [manifest.json]({manifest_data.get('templates_path')}/manifest.json)")
 
     with open(MANIFEST_MD_FILE, "w") as file:
