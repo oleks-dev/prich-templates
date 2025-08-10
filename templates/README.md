@@ -1,0 +1,12 @@
+# prich Templates  
+prich Templates  
+
+| ID   | Name  | Description | Tags  | Version | Author | Zip     | Zip Checksum | Folder Checksum |
+| :--- | :---: |    :---:    | :---: |  :---:  | :---:  | :---    | :---         | :---            |
+| [cli-expert](https://github.com/oleks-dev/prich-templates/tree/main/templates/cli-expert) | CLI Expert | CLI command usage helper providing real-world examples for shell commands across different operating systems. | os, cli, shell, helper | 1.0 | prich | [cli-expert.zip](https://github.com/oleks-dev/prich-templates/tree/main/dist/cli-expert.zip) | 38c5def | f9b55f8 |
+| [code-review](https://github.com/oleks-dev/prich-templates/tree/main/templates/code-review) | Code Review | Review code with a deep focus on logic, structure, modularity, and design | code, review, quality, refactor, design | 1.0 | prich | [code-review.zip](https://github.com/oleks-dev/prich-templates/tree/main/dist/code-review.zip) | 6d638cd | 206f871 |
+| [explain-code](https://github.com/oleks-dev/prich-templates/tree/main/templates/explain-code) | Explain Code | Provide detailed code explanation | code | 1.0 | prich | [explain-code.zip](https://github.com/oleks-dev/prich-templates/tree/main/dist/explain-code.zip) | a12ae11 | 12c326f |
+| [generate-docstrings](https://github.com/oleks-dev/prich-templates/tree/main/templates/generate-docstrings) | Generate Docstrings | Generate Docstring documentation for code methods/classes | code, doc, generate | 1.0 | prich | [generate-docstrings.zip](https://github.com/oleks-dev/prich-templates/tree/main/dist/generate-docstrings.zip) | f57ef4b | b233aed |
+| [generate-unit-tests](https://github.com/oleks-dev/prich-templates/tree/main/templates/generate-unit-tests) | Generate Unit Tests | Generate Unit Tests for the code file | code, quality, test | 1.0 | prich | [generate-unit-tests.zip](https://github.com/oleks-dev/prich-templates/tree/main/dist/generate-unit-tests.zip) | f2dc963 | ac62f37 |
+| [summarize-git-diff](https://github.com/oleks-dev/prich-templates/tree/main/templates/summarize-git-diff) | Summarize git diff | Generate a summary and review of differences between local code and remote or committed states. | code, git, diff, review | 1.0 | prich | [summarize-git-diff.zip](https://github.com/oleks-dev/prich-templates/tree/main/dist/summarize-git-diff.zip) | 416c0e8 | 434c609 |
+Manifest file: [manifest.json](https://github.com/oleks-dev/prich-templates/tree/main/templates/manifest.json)

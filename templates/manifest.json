@@ -1,0 +1,126 @@
+{
+  "archives_path": "https://github.com/oleks-dev/prich-templates/tree/main/dist",
+  "description": "Templates Available for Installation from prich-templates GitHub Repository",
+  "name": "prich Templates",
+  "repository": "https://github.com/oleks-dev/prich-templates",
+  "schema_version": "1.0",
+  "templates": [
+    {
+      "archive": "cli-expert.zip",
+      "archive_checksum": "38c5def03643406f9844e1dde12c2fa69eaa6f570aa1d510f90d682dd5f05a12",
+      "author": "prich",
+      "description": "CLI command usage helper providing real-world examples for shell commands across different operating systems.",
+      "files": [
+        "cli-expert/cli-expert.yaml"
+      ],
+      "folder_checksum": "f9b55f89d3b6ec28aff63665c1e410689a9f3f7f09b7bde0eada49f5be6259e6",
+      "id": "cli-expert",
+      "name": "CLI Expert",
+      "schema_version": "1.0",
+      "tags": [
+        "os",
+        "cli",
+        "shell",
+        "helper"
+      ],
+      "version": "1.0"
+    },
+    {
+      "archive": "code-review.zip",
+      "archive_checksum": "6d638cdbde67d17c23ee7c712f9b7087b1565b2f4eabd5ff2568686978390895",
+      "author": "prich",
+      "description": "Review code with a deep focus on logic, structure, modularity, and design",
+      "files": [
+        "code-review/code-review.yaml"
+      ],
+      "folder_checksum": "206f871deb49f166a04534c5a9bcff3efb9f05125ffb52f3ce07af04d205949c",
+      "id": "code-review",
+      "name": "Code Review",
+      "schema_version": "1.0",
+      "tags": [
+        "code",
+        "review",
+        "quality",
+        "refactor",
+        "design"
+      ],
+      "version": "1.0"
+    },
+    {
+      "archive": "explain-code.zip",
+      "archive_checksum": "a12ae11b89eb73062940c1a75043d3a2fd4d64a1e0bc176c9cb8d4633b689aec",
+      "author": "prich",
+      "description": "Provide detailed code explanation",
+      "files": [
+        "explain-code/explain-code.yaml"
+      ],
+      "folder_checksum": "12c326f84a1978941b4604423568600bd2b342d9b55fc142d721318d1fa69cd6",
+      "id": "explain-code",
+      "name": "Explain Code",
+      "schema_version": "1.0",
+      "tags": [
+        "code"
+      ],
+      "version": "1.0"
+    },
+    {
+      "archive": "generate-docstrings.zip",
+      "archive_checksum": "f57ef4b97283b4faf8e519fa215c1017fdaa95f665e678bfd28b66b82776d66a",
+      "author": "prich",
+      "description": "Generate Docstring documentation for code methods/classes",
+      "files": [
+        "generate-docstrings/generate-docstrings.yaml"
+      ],
+      "folder_checksum": "b233aedc11ddb0836b7f16180493dd663247e2300bac0265356c2c9c9290d6bb",
+      "id": "generate-docstrings",
+      "name": "Generate Docstrings",
+      "schema_version": "1.0",
+      "tags": [
+        "code",
+        "doc",
+        "generate"
+      ],
+      "version": "1.0"
+    },
+    {
+      "archive": "generate-unit-tests.zip",
+      "archive_checksum": "f2dc963587cfc64ee5e265b1113803f79cd7f5871f84edc7a04aaae3d8e6dce0",
+      "author": "prich",
+      "description": "Generate Unit Tests for the code file",
+      "files": [
+        "generate-unit-tests/generate-unit-tests.yaml"
+      ],
+      "folder_checksum": "ac62f3780373df26dc3989f4e30c555f6f4aef7d55af91b7f12841a0fa23b835",
+      "id": "generate-unit-tests",
+      "name": "Generate Unit Tests",
+      "schema_version": "1.0",
+      "tags": [
+        "code",
+        "quality",
+        "test"
+      ],
+      "version": "1.0"
+    },
+    {
+      "archive": "summarize-git-diff.zip",
+      "archive_checksum": "416c0e8a41ce6fb930894780da609c691332a367137c69758a2c76e01d118192",
+      "author": "prich",
+      "description": "Generate a summary and review of differences between local code and remote or committed states.",
+      "files": [
+        "summarize-git-diff/summarize-git-diff.yaml"
+      ],
+      "folder_checksum": "434c609a3f7f44668b17ab656687ce9752880208d69fe348e4411f28a0c47cdf",
+      "id": "summarize-git-diff",
+      "name": "Summarize git diff",
+      "schema_version": "1.0",
+      "tags": [
+        "code",
+        "git",
+        "diff",
+        "review"
+      ],
+      "version": "1.0"
+    }
+  ],
+  "templates_path": "https://github.com/oleks-dev/prich-templates/tree/main/templates"
+}
