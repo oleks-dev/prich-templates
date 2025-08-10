@@ -47,7 +47,7 @@ steps:
       system: |
         Assistant is a senior engineer who makes a git diff summarization{% if review %} and detailed review{% endif %} in natural language.
       user: |
-        Summarize {% if review %} and review {% endif %}the following:
+        Summarize {% if review %}and review {% endif %}the following:
         ```text
         {{ git_diff }}
         ```
