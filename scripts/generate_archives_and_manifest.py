@@ -72,8 +72,8 @@ def directory_hash(dir_path: Path) -> str:
 
 def generate_md_file(manifest_data):
     md_content = [
-        f"# prich Templates  ",
-        f"{manifest_data.get('name')}  ",
+        f"# {manifest_data.get('name')}  ",
+        f"{manifest_data.get('description')}",
         "",
         "| ID   | Name  | Description | Tags  | Version | Author | Zip     | Zip Checksum | Folder Checksum |",
         "| :--- | :---: |    :---:    | :---: |  :---:  | :---:  | :---    | :---         | :---            |",
@@ -94,18 +94,37 @@ def save_manifest(m: dict):
     MANIFEST_FILE.parent.mkdir(parents=True, exist_ok=True)
     MANIFEST_FILE.write_text(json.dumps(m, indent=2, sort_keys=True))
 
-def load_manifest() -> dict:
-    if MANIFEST_FILE.exists():
-        return json.loads(MANIFEST_FILE.read_text())
-    return {
+def load_manifest() -> (dict, bool):
+    need_to_save = False
+    main_fields_dict = {
         "name": "prich Templates",
         "repository": "https://github.com/oleks-dev/prich-templates",
         "description": "Templates Available for Installation from prich-templates GitHub Repository",
         "templates_path": "https://github.com/oleks-dev/prich-templates/tree/main/templates",
         "archives_path": "https://github.com/oleks-dev/prich-templates/tree/main/dist",
         "schema_version": MANIFEST_SCHEMA_VERSION,
-        "templates": []
     }
+    if MANIFEST_FILE.exists():
+        manifest = json.loads(MANIFEST_FILE.read_text())
+        # remove old keys
+        loaded_manifest_keys = list(manifest.keys())
+        for k in loaded_manifest_keys:
+            if k != 'templates':
+                if k not in main_fields_dict:
+                    manifest.pop(k)
+                    if not need_to_save:
+                        need_to_save = True
+        # remove add changes
+        for k,v in main_fields_dict.items():
+            if manifest.get(k) != v:
+                manifest[k] = v
+                if not need_to_save:
+                    need_to_save = True
+    else:
+        manifest = main_fields_dict
+        manifest["templates"] = []
+        need_to_save = True
+    return manifest, need_to_save
 
 def get_template_from_manifest(manifest, template_id):
     for template in manifest.get("templates") or []:
@@ -118,7 +137,7 @@ def main():
     TMP_DIR.mkdir(parents=True, exist_ok=True)
     DIST_DIR.mkdir(parents=True, exist_ok=True)
     templates = []
-    manifest = load_manifest()
+    manifest, need_to_save_manifest = load_manifest()
     updated = 0
 
     print("Generating distributive archives of templates with manifest")
@@ -170,7 +189,9 @@ def main():
         else:
             print(f"- Skip {template_id}: {zip_path} (no changes)")
 
-    if updated > 0:
+    if need_to_save_manifest or updated > 0:
+        if need_to_save_manifest:
+            print("Manifest fields change detected")
         print(f"Save manifest file: {MANIFEST_FILE}")
         save_manifest(manifest)
         print(f"Save manifest readme file: {MANIFEST_FILE}")
