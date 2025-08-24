@@ -3,6 +3,111 @@
   "name": "prich Templates",
   "repository": "https://github.com/oleks-dev/prich-templates",
   "schema_version": "1.0",
-  "templates": [],
+  "templates": [
+    {
+      "author": "prich",
+      "description": "CLI command usage helper providing real-world examples for shell commands across different operating systems.",
+      "files": [
+        "cli-expert.yaml"
+      ],
+      "folder_checksum": "f9b55f89d3b6ec28aff63665c1e410689a9f3f7f09b7bde0eada49f5be6259e6",
+      "id": "cli-expert",
+      "name": "CLI Expert",
+      "schema_version": "1.0",
+      "tags": [
+        "os",
+        "cli",
+        "shell",
+        "helper"
+      ],
+      "version": "1.0"
+    },
+    {
+      "author": "prich",
+      "description": "Review code with a deep focus on logic, structure, modularity, and design",
+      "files": [
+        "code-review.yaml"
+      ],
+      "folder_checksum": "206f871deb49f166a04534c5a9bcff3efb9f05125ffb52f3ce07af04d205949c",
+      "id": "code-review",
+      "name": "Code Review",
+      "schema_version": "1.0",
+      "tags": [
+        "code",
+        "review",
+        "quality",
+        "refactor",
+        "design"
+      ],
+      "version": "1.0"
+    },
+    {
+      "author": "prich",
+      "description": "Provide detailed code explanation",
+      "files": [
+        "explain-code.yaml"
+      ],
+      "folder_checksum": "12c326f84a1978941b4604423568600bd2b342d9b55fc142d721318d1fa69cd6",
+      "id": "explain-code",
+      "name": "Explain Code",
+      "schema_version": "1.0",
+      "tags": [
+        "code"
+      ],
+      "version": "1.0"
+    },
+    {
+      "author": "prich",
+      "description": "Generate Docstring documentation for code methods/classes",
+      "files": [
+        "generate-docstrings.yaml"
+      ],
+      "folder_checksum": "b233aedc11ddb0836b7f16180493dd663247e2300bac0265356c2c9c9290d6bb",
+      "id": "generate-docstrings",
+      "name": "Generate Docstrings",
+      "schema_version": "1.0",
+      "tags": [
+        "code",
+        "doc",
+        "generate"
+      ],
+      "version": "1.0"
+    },
+    {
+      "author": "prich",
+      "description": "Generate Unit Tests for the code file",
+      "files": [
+        "generate-unit-tests.yaml"
+      ],
+      "folder_checksum": "ac62f3780373df26dc3989f4e30c555f6f4aef7d55af91b7f12841a0fa23b835",
+      "id": "generate-unit-tests",
+      "name": "Generate Unit Tests",
+      "schema_version": "1.0",
+      "tags": [
+        "code",
+        "quality",
+        "test"
+      ],
+      "version": "1.0"
+    },
+    {
+      "author": "prich",
+      "description": "Generate a summary and review of differences between local code and remote or committed states.",
+      "files": [
+        "summarize-git-diff.yaml"
+      ],
+      "folder_checksum": "434c609a3f7f44668b17ab656687ce9752880208d69fe348e4411f28a0c47cdf",
+      "id": "summarize-git-diff",
+      "name": "Summarize git diff",
+      "schema_version": "1.0",
+      "tags": [
+        "code",
+        "git",
+        "diff",
+        "review"
+      ],
+      "version": "1.0"
+    }
+  ],
   "templates_path": "https://github.com/oleks-dev/prich-templates/tree/main/templates"
 }
