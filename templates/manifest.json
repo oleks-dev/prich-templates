@@ -109,5 +109,6 @@
       "version": "1.0"
     }
   ],
+  "templates_download_path": "https://raw.githubusercontent.com/oleks-dev/prich-templates/refs/heads/main/templates",
   "templates_path": "https://github.com/oleks-dev/prich-templates/tree/main/templates"
 }
