@@ -101,6 +101,7 @@ def load_manifest() -> (dict, bool):
         "repository": "https://github.com/oleks-dev/prich-templates",
         "description": "Templates Available for Installation from prich-templates GitHub Repository",
         "templates_path": "https://github.com/oleks-dev/prich-templates/tree/main/templates",
+        "templates_download_path": "https://raw.githubusercontent.com/oleks-dev/prich-templates/refs/heads/main/templates",
         "schema_version": MANIFEST_SCHEMA_VERSION,
     }
     if MANIFEST_FILE.exists():
