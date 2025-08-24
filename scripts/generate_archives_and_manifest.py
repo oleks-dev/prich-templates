@@ -1,4 +1,4 @@
-import shutil
+import sys
 import hashlib
 import yaml
 import json
@@ -6,8 +6,6 @@ from pathlib import Path
 from zipfile import ZipFile, ZipInfo, ZIP_DEFLATED
 
 TEMPLATES_DIR = Path("templates")
-DIST_DIR = Path("dist")
-TMP_DIR = Path("tmp")
 MANIFEST_SCHEMA_VERSION = "1.0"
 MANIFEST_FILE = TEMPLATES_DIR / "manifest.json"
 MANIFEST_MD_FILE = TEMPLATES_DIR / "README.md"
@@ -55,10 +53,12 @@ def iter_files(base: Path):
         if p.is_file():
             yield p
 
-def directory_hash(dir_path: Path) -> str:
+def directory_hash(dir_path: Path) -> tuple[str, list[str]]:
     h = hashlib.sha256()
+    dir_files_list = []
     for p in iter_files(dir_path):
         rel = p.relative_to(dir_path).as_posix()
+        dir_files_list.append(str(rel))
         # hash path + normalized type/perms + file bytes
         h.update(b"PATH\x00" + rel.encode("utf-8"))
         h.update(b"MODE\x00" + str(FILE_MODE).encode())
@@ -68,19 +68,19 @@ def directory_hash(dir_path: Path) -> str:
                 if not chunk:
                     break
                 h.update(chunk)
-    return h.hexdigest()
+    return h.hexdigest(), dir_files_list
 
 def generate_md_file(manifest_data):
     md_content = [
         f"# {manifest_data.get('name')}  ",
         f"{manifest_data.get('description')}",
         "",
-        "| ID   | Name  | Description | Tags  | Version | Author | Zip     | Zip Checksum | Folder Checksum |",
-        "| :--- | :---: |    :---:    | :---: |  :---:  | :---:  | :---    | :---         | :---            |",
+        "| ID   | Name  | Description | Tags  | Version | Author | Folder Checksum |",
+        "| :--- | :---: |    :---:    | :---: |  :---:  | :---:  | :---            |",
     ]
     templates = sorted(manifest_data.get("templates"), key=lambda x: x["id"])
     for template in templates:
-        md_content.append(f"| [{template.get('id')}]({manifest_data.get('templates_path')}/{template.get('id')}) | {template.get('name')} | {template.get('description')} | {', '.join(template.get('tags'))} | {template.get('version')} | {template.get('author')} | [{template.get('archive')}]({manifest_data.get('archives_path')}/{template.get('archive')}) | {template.get('archive_checksum')[:7]} | {template.get('folder_checksum')[:7]} |")
+        md_content.append(f"| [{template.get('id')}]({manifest_data.get('templates_path')}/{template.get('id')}) | {template.get('name')} | {template.get('description')} | {', '.join(template.get('tags'))} | {template.get('version')} | {template.get('author')} | {template.get('folder_checksum')[:7]} |")
     md_content.append("")
     md_content.append(f"Manifest file: [manifest.json]({manifest_data.get('templates_path')}/manifest.json)")
 
@@ -101,7 +101,6 @@ def load_manifest() -> (dict, bool):
         "repository": "https://github.com/oleks-dev/prich-templates",
         "description": "Templates Available for Installation from prich-templates GitHub Repository",
         "templates_path": "https://github.com/oleks-dev/prich-templates/tree/main/templates",
-        "archives_path": "https://github.com/oleks-dev/prich-templates/tree/main/dist",
         "schema_version": MANIFEST_SCHEMA_VERSION,
     }
     if MANIFEST_FILE.exists():
@@ -133,10 +132,7 @@ def get_template_from_manifest(manifest, template_id):
     return {}
 
 
-def main():
-    TMP_DIR.mkdir(parents=True, exist_ok=True)
-    DIST_DIR.mkdir(parents=True, exist_ok=True)
-    templates = []
+def main(force: bool = False):
     manifest, need_to_save_manifest = load_manifest()
     updated = 0
 
@@ -147,19 +143,13 @@ def main():
 
         template_id = subfolder.name
         manifest_item = get_template_from_manifest(manifest, str(template_id))
-        current_hash = directory_hash(subfolder)
+        current_hash, templates_files = directory_hash(subfolder)
         prev_hash = manifest_item.get("folder_checksum")
 
-        zip_name = f"{template_id}.zip"
-        zip_path = DIST_DIR / zip_name
-
-        if current_hash != prev_hash or not zip_path.exists():
+        if current_hash != prev_hash or force:
             try:
-                zip_tmp_path = TMP_DIR / f"{zip_name}.tmp"
-                folder_checksum = directory_hash(subfolder)
-                archive_checksum, templates_files = zip_template_folder(subfolder, zip_tmp_path)
+                folder_checksum = current_hash
 
-                shutil.move(zip_tmp_path, zip_path)
                 updated += 1
 
                 with open(TEMPLATES_DIR / template_id / f"{template_id}.yaml") as template_file:
@@ -175,30 +165,28 @@ def main():
                         "author": template.get("author"),
                         "version": template.get("version"),
                         "schema_version": template.get("schema_version"),
-                        "archive": zip_name,
-                        "archive_checksum": archive_checksum,
                         "folder_checksum": folder_checksum,
                         "files": templates_files
                     }
                 if manifest_item:
                     manifest['templates'].remove(manifest_item)
                 manifest['templates'].append(changed_template)
-                print(f"- Archived {template_id}: {zip_path}")
+                print(f"- Updated {template_id}")
             except Exception as e:
                 print(f"- Failed to prepare {template_id}: {e}")
         else:
-            print(f"- Skip {template_id}: {zip_path} (no changes)")
+            print(f"- Skip {template_id} (no changes)")
 
     if need_to_save_manifest or updated > 0:
         if need_to_save_manifest:
             print("Manifest fields change detected")
         print(f"Save manifest file: {MANIFEST_FILE}")
         save_manifest(manifest)
-        print(f"Save manifest readme file: {MANIFEST_FILE}")
+        print(f"Save manifest readme file: {MANIFEST_MD_FILE}")
         generate_md_file(manifest)
         print(f"Generated {updated} template archives, updated {MANIFEST_FILE} and {MANIFEST_MD_FILE}")
     else:
         print("Nothing to do")
 
 if __name__ == "__main__":
-    main()
+    main(force='--force' in sys.argv)

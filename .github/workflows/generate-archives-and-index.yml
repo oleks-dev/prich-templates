@@ -31,9 +31,9 @@ jobs:
         run: |
           git config user.name "github-actions[bot]"
           git config user.email "41898282+github-actions[bot]@users.noreply.github.com"
-          git add dist/*.zip templates/manifest.json templates/README.md
+          git add templates/manifest.json templates/README.md
 
           git diff --cached --quiet || (
-            git commit -m "chore: auto-zip templates and update manifest"
+            git commit -m "chore: auto-generate templates manifest and readme"
             git push
           )
