@@ -8,26 +8,25 @@ tags: ["code", "review", "quality", "refactor", "design"]
 steps:
   - name: "Ask to do a code review"
     type: llm
-    prompt:
-      system: |
-        Assistant is a senior engineer who provides detailed, structured, and constructive code review{% if purpose %} for {{ purpose }}{% endif %}{% if lang %} built using {{ lang }}{% endif %}.
-      user: |
-        Review the following files in terms of logic, structure, modularity, and design. Focus especially on refactoring and clarity{% if focus %}, specifically on {{ focus }} aspects where applicable{% endif %}.
-    
-        1. Architecture & structure
-        2. Logic & clarity
-        3. Modularity & separation of concerns
-        4. Refactoring opportunities
-        5. Any critical issues or smells
-    
-        Respond with markdown-formatted bullets under each section. Use sub-bullets to not repeat phrasing.
-    
-        {% for block in file %}
-        ### File {{ block }}:
-        ```{% if lang %}{{ lang.lower() }}{% endif %}
-        {{ block | include_file }}
-        ```
-        {% endfor %}
+    instructions: |
+      Assistant is a senior engineer who provides detailed, structured, and constructive code review{% if purpose %} for {{ purpose }}{% endif %}{% if lang %} built using {{ lang }}{% endif %}.
+    input: |
+      Review the following files in terms of logic, structure, modularity, and design. Focus especially on refactoring and clarity{% if focus %}, specifically on {{ focus }} aspects where applicable{% endif %}.
+  
+      1. Architecture & structure
+      2. Logic & clarity
+      3. Modularity & separation of concerns
+      4. Refactoring opportunities
+      5. Any critical issues or smells
+  
+      Respond with markdown-formatted bullets under each section. Use sub-bullets to not repeat phrasing.
+  
+      {% for block in file %}
+      ### File {{ block }}:
+      ```{% if lang %}{{ lang.lower() }}{% endif %}
+      {{ block | include_file }}
+      ```
+      {% endfor %}
 variables:
   - name: file
     description: File to review

@@ -43,14 +43,13 @@ steps:
 
   - name: "Ask to summarize the diff"
     type: llm
-    prompt:
-      system: |
-        Assistant is a senior engineer who makes a git diff summarization{% if review %} and detailed review{% endif %} in natural language.
-      user: |
-        Summarize {% if review %}and review {% endif %}the following:
-        ```text
-        {{ git_diff }}
-        ```
+    instructions: |
+      Assistant is a senior engineer who makes a git diff summarization{% if review %} and detailed review{% endif %} in natural language.
+    input: |
+      Summarize {% if review %}and review {% endif %}the following:
+      ```text
+      {{ git_diff }}
+      ```
 usage_examples:
   - "summarize-git-diff"
   - "summarize-git-diff --review"

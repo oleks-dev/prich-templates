@@ -8,18 +8,17 @@ tags: ["code", "doc", "generate"]
 steps:
   - name: "Ask to generate docstrings"
     type: llm
-    prompt:
-      system: |
-        Assistant is a senior engineer who writes docstrings for methods and/or classes for provided code{% if purpose %} for {{ purpose }}{% endif %}{% if lang %} built using {{ lang }}{% endif %}. Put modifications into a code block like:
-        ```
-        ...code here
-        ```
-      user: |
-        Review the following file and generate or update the docstrings by replacing or adding text. Do not add all the code in the output, focus on changed parts and use '...' to hide the rest.
-        File: {{ file }}
-        ```{% if lang %}{{ lang.lower() }}{% endif %}
-        {{ file | include_file}}
-        ```
+    instructions: |
+      Assistant is a senior engineer who writes docstrings for methods and/or classes for provided code{% if purpose %} for {{ purpose }}{% endif %}{% if lang %} built using {{ lang }}{% endif %}. Put modifications into a code block like:
+      ```
+      ...code here
+      ```
+    input: |
+      Review the following file and generate or update the docstrings by replacing or adding text. Do not add all the code in the output, focus on changed parts and use '...' to hide the rest.
+      File: {{ file }}
+      ```{% if lang %}{{ lang.lower() }}{% endif %}
+      {{ file | include_file}}
+      ```
 usage_examples:
   - "generate-docstrings --file mycode.py"
   - "generate-docstrings --file ./proj/mycode.py --purpose \"fetch json data from remote endpoint\" --lang python"

@@ -8,15 +8,14 @@ tags: ["code", "quality", "test"]
 steps:
   - name: "Ask to Generate Unit Tests"
     type: llm
-    prompt:
-      system: |
-        Assistant is a senior engineer who writes unit tests for{% if lang %} {{ lang }}{% endif %}.
-      user: |
-        Write unit tests for the following code:
-        File: {{ file }}
-        ```{% if lang %}{{ lang.lower() }}{% endif %}
-        {{ file | include_file }}
-        ```
+    instructions: |
+      Assistant is a senior engineer who writes unit tests for{% if lang %} {{ lang }}{% endif %}.
+    input: |
+      Write unit tests for the following code:
+      File: {{ file }}
+      ```{% if lang %}{{ lang.lower() }}{% endif %}
+      {{ file | include_file }}
+      ```
 variables:
   - name: file
     description: Code file
