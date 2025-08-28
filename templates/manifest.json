@@ -10,7 +10,7 @@
       "files": [
         "cli-expert.yaml"
       ],
-      "folder_checksum": "f9b55f89d3b6ec28aff63665c1e410689a9f3f7f09b7bde0eada49f5be6259e6",
+      "folder_checksum": "6bc109546275fa8ffb71e178000dca39b8e72b4c0987568d236ffecb010fc268",
       "id": "cli-expert",
       "name": "CLI Expert",
       "schema_version": "1.0",
@@ -28,7 +28,7 @@
       "files": [
         "code-review.yaml"
       ],
-      "folder_checksum": "206f871deb49f166a04534c5a9bcff3efb9f05125ffb52f3ce07af04d205949c",
+      "folder_checksum": "bea1cd970f904d1234d777496e194faf4d966102ab33904f4b64657bafa0140c",
       "id": "code-review",
       "name": "Code Review",
       "schema_version": "1.0",
@@ -47,7 +47,7 @@
       "files": [
         "explain-code.yaml"
       ],
-      "folder_checksum": "12c326f84a1978941b4604423568600bd2b342d9b55fc142d721318d1fa69cd6",
+      "folder_checksum": "010040751f8c67cfaaefc0f12cfc43eb138d85aeb89591a7ef32e22c0da59e29",
       "id": "explain-code",
       "name": "Explain Code",
       "schema_version": "1.0",
@@ -62,7 +62,7 @@
       "files": [
         "generate-docstrings.yaml"
       ],
-      "folder_checksum": "b233aedc11ddb0836b7f16180493dd663247e2300bac0265356c2c9c9290d6bb",
+      "folder_checksum": "2825ef379c7988b6fad2e73f099669ad94afda9e5f2320ddc1f0d3c678ead501",
       "id": "generate-docstrings",
       "name": "Generate Docstrings",
       "schema_version": "1.0",
@@ -79,7 +79,7 @@
       "files": [
         "generate-unit-tests.yaml"
       ],
-      "folder_checksum": "ac62f3780373df26dc3989f4e30c555f6f4aef7d55af91b7f12841a0fa23b835",
+      "folder_checksum": "0abe198c26eee874e55121d2b9ea1235f4a9b520418fd7215ad4695ee9287647",
       "id": "generate-unit-tests",
       "name": "Generate Unit Tests",
       "schema_version": "1.0",
@@ -96,7 +96,7 @@
       "files": [
         "summarize-git-diff.yaml"
       ],
-      "folder_checksum": "434c609a3f7f44668b17ab656687ce9752880208d69fe348e4411f28a0c47cdf",
+      "folder_checksum": "2f7817425f75e3c4d6e2f01cd2c8aff8e8732ab6e19d6cb3d0ade1ceffb4e338",
       "id": "summarize-git-diff",
       "name": "Summarize git diff",
       "schema_version": "1.0",
