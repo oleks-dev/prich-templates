@@ -7,7 +7,7 @@ description: Generate a summary and review of differences between local code and
 tags: ["code", "git", "diff", "review"]
 steps:
   - name: "Run git diff working vs last commit"
-    when: "working_vs_last_commit or (not working_vs_last_commit and not working_vs_remote and not committed_vs_remote and not remote_vs_local)"
+    when: "working_vs_last_commit or not (working_vs_last_commit or working_vs_remote or committed_vs_remote or remote_vs_local or branch_vs_main)"
     type: command
     call: "git"
     args: ["diff", "HEAD"]
