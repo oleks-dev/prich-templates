@@ -137,12 +137,14 @@ def main(force: bool = False):
     manifest, need_to_save_manifest = load_manifest()
     updated = 0
 
-    print("Generating distributive archives of templates with manifest")
+    print("Generating distributive templates with manifest")
+    found_templates = []
     for subfolder in sorted(TEMPLATES_DIR.iterdir()):
         if not subfolder.is_dir():
             continue
 
         template_id = subfolder.name
+        found_templates.append(template_id)
         manifest_item = get_template_from_manifest(manifest, str(template_id))
         current_hash, templates_files = directory_hash(subfolder)
         prev_hash = manifest_item.get("folder_checksum")
@@ -178,6 +180,13 @@ def main(force: bool = False):
         else:
             print(f"- Skip {template_id} (no changes)")
 
+    remove_templates = [x for x in manifest['templates'] if x.get("id") not in found_templates]
+    if len(remove_templates) > 0:
+        for remove_template in remove_templates:
+            print(f"- Removing {remove_template['id']}")
+            manifest['templates'].remove(remove_template)
+        need_to_save_manifest = True
+
     if need_to_save_manifest or updated > 0:
         if need_to_save_manifest:
             print("Manifest fields change detected")
@@ -185,7 +194,7 @@ def main(force: bool = False):
         save_manifest(manifest)
         print(f"Save manifest readme file: {MANIFEST_MD_FILE}")
         generate_md_file(manifest)
-        print(f"Generated {updated} template archives, updated {MANIFEST_FILE} and {MANIFEST_MD_FILE}")
+        print(f"Generated {updated} template manifest records, updated {MANIFEST_FILE} and {MANIFEST_MD_FILE}")
     else:
         print("Nothing to do")
 
