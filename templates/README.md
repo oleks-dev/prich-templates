@@ -8,6 +8,6 @@ Templates Available for Installation from prich-templates GitHub Repository
 | [explain-code](https://github.com/oleks-dev/prich-templates/tree/main/templates/explain-code) | Explain Code | Provide detailed code explanation | code | 1.0 | prich | 0100407 |
 | [generate-docstrings](https://github.com/oleks-dev/prich-templates/tree/main/templates/generate-docstrings) | Generate Docstrings | Generate Docstring documentation for code methods/classes | code, doc, generate | 1.0 | prich | 2825ef3 |
 | [generate-unit-tests](https://github.com/oleks-dev/prich-templates/tree/main/templates/generate-unit-tests) | Generate Unit Tests | Generate Unit Tests for the code file | code, quality, test | 1.0 | prich | 0abe198 |
-| [git-diff](https://github.com/oleks-dev/prich-templates/tree/main/templates/git-diff) | Git Diff | Generate a summary and review of differences between local code and remote or committed states. | code, git, diff, review | 1.0 | prich | 7d6cad8 |
+| [git-diff](https://github.com/oleks-dev/prich-templates/tree/main/templates/git-diff) | Git Diff | Generate a summary and review of differences between local code and remote or committed states. | code, git, diff, review | 1.0 | prich | d2fa8c6 |
 
 Manifest file: [manifest.json](https://github.com/oleks-dev/prich-templates/tree/main/templates/manifest.json)

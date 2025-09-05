@@ -96,7 +96,7 @@
       "files": [
         "git-diff.yaml"
       ],
-      "folder_checksum": "7d6cad8c8a69f89cbd2a19d542adf3ad2427a6920756963f84b5e9663c0cb124",
+      "folder_checksum": "d2fa8c6b6a824c890db8ac131f41995e8a702b0c6785c51a5ed29af3f8316031",
       "id": "git-diff",
       "name": "Git Diff",
       "schema_version": "1.0",
