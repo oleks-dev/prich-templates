@@ -94,24 +94,6 @@
       "author": "prich",
       "description": "Generate a summary and review of differences between local code and remote or committed states.",
       "files": [
-        "summarize-git-diff.yaml"
-      ],
-      "folder_checksum": "2f7817425f75e3c4d6e2f01cd2c8aff8e8732ab6e19d6cb3d0ade1ceffb4e338",
-      "id": "summarize-git-diff",
-      "name": "Summarize git diff",
-      "schema_version": "1.0",
-      "tags": [
-        "code",
-        "git",
-        "diff",
-        "review"
-      ],
-      "version": "1.0"
-    },
-    {
-      "author": "prich",
-      "description": "Generate a summary and review of differences between local code and remote or committed states.",
-      "files": [
         "git-diff.yaml"
       ],
       "folder_checksum": "7d6cad8c8a69f89cbd2a19d542adf3ad2427a6920756963f84b5e9663c0cb124",
